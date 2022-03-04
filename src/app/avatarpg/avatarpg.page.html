@@ -1,0 +1,31 @@
+<ion-toolbar color="primary">
+  <div class="location-selector-class">
+    <div class="toolbar-icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+    <div class="class">Select</div>
+  </div>
+</ion-toolbar>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tmp of this.countrylist">
+      <ion-item>
+        <ion-avatar item-start>
+          <!-- <img src="img/avatar-cher.png"> -->
+          <ion-icon name={{tmp.icon}}></ion-icon>
+        </ion-avatar>
+        <h2>{{tmp.name}}</h2>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option color="danger" (click)="presentConfirmDEL(tmp)">
+          <ion-icon slot="start" name="trash"></ion-icon>
+                Delete
+        </ion-item-option>
+        <ion-item-option color="warning"  (click)="presentPromptEdit(tmp.name)">
+          <ion-icon slot="end" name="settings"></ion-icon>
+                Edit
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-list>
+<ion-content>
+

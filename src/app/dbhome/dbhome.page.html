@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-icon name="storefront-outline" size="large"></ion-icon>
+      <ion-title>Diary</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="presentPrompAdd()" expand="full" color="secondary" icon-start>
+    <ion-icon name="add" ></ion-icon>
+      Create
+  </ion-button>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tmp of this.stdobj">
+      <ion-item  >
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img src={{tmp.getimg}} />
+            </ion-thumbnail>
+            <ion-label>
+              <h3>{{tmp.getname}}</h3>
+              <p>{{tmp.getage}}</p>
+              <p>{{tmp.getaddress}}</p>
+            </ion-label>
+            <ion-button slot="end" (click)="showModal(item)">
+              Cast
+            </ion-button>
+        </ion-item>
+          
+      </ion-item>
+        <ion-item-options>
+  
+          <ion-button color="danger" (click)="presentConfirmDelete(tmp.getid)">
+            <ion-icon name="trash"></ion-icon> Delete</ion-button>
+            <ion-button color="primary" (click)="presentPromptEdit(tmp)">
+              <ion-icon name="create-outline"></ion-icon> Edit</ion-button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+</ion-content>

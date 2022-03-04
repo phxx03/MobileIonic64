@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-icon name="storefront-outline" size="large"></ion-icon>
+      <ion-title>Diary</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+ 
+  <ion-card  *ngFor="let tmpid of this.stdobj" >
+  <ion-list>
+    <!--<ion-item-sliding *ngFor="let tmp of this.stdobj">-->
+            <ion-thumbnail>
+              <img style="width: 80px; height: 80px;" src={{tmpid.getimg}} />
+            </ion-thumbnail>
+            <ion-card-content>
+              <ion-card-title>  
+              {{tmpid.getname}}
+              </ion-card-title>
+              <p>{{tmpid.getage}}</p>
+              <p>{{tmpid.getaddress}}</p>
+            </ion-card-content>
+    </ion-list>
+  </ion-card>
+    
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <br><br><br>
+  <ion-item>
+      <ion-label position="fixed">Name - surname</ion-label>
+      <ion-input [(ngModel)]="name" type="text" placeholder="Enter your name"></ion-input>
+  </ion-item><br>
+
+  <ion-item>
+      <ion-label position="fixed">Age</ion-label>
+      <ion-input [(ngModel)]="age" type="text" placeholder="Enter your age"></ion-input>
+  </ion-item><br>
+
+  <ion-list>
+      <ion-radio-group [(ngModel)]="course">
+          <ion-list-header>
+              <ion-label>Choose your course</ion-label>
+          </ion-list-header>
+
+          <ion-item>
+              <ion-label>Computer-2500 Baht, (25Person/class)</ion-label>
+              <ion-radio slot="start" value="Computer"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>Chinese Language-2000 Baht, (25Person/class)</ion-label>
+              <ion-radio slot="start" value="Chinese Language"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>Communication skill-1500 Baht, (15Person/class)</ion-label>
+              <ion-radio slot="start" value="Communication skill"></ion-radio>
+          </ion-item>
+      </ion-radio-group>
+  </ion-list><br>
+
+  <ion-button shape="round" (click)="openToast()">LOGIN</ion-button>
+  <ion-button shape="round" fill="outline" (click)="go()">APPLY</ion-button>
+</ion-content>
