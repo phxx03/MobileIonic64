@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  
+  <p>{{id}}</p>
  
   <ion-card  *ngFor="let tmpid of this.stdobj" >
   <ion-list>
@@ -23,7 +23,10 @@
               <p>{{tmpid.getage}}</p>
               <p>{{tmpid.getaddress}}</p>
             </ion-card-content>
+
+            
     </ion-list>
   </ion-card>
+
     
 </ion-content>

@@ -22,6 +22,20 @@ export class BookService {
   createStudent(tmpstd: any) {
     return this.ngFirestore.collection('student').add(tmpstd);
   }
+
+  getOne(id:string) {
+    return this.ngFirestore.collection('student').doc(id).valueChanges();
+  }
+
+  getOnething(id) {
+    return this.ngFirestore.collection('student').doc(id).get()
+  }
+
+  getTwo(id) {
+    return this.ngFirestore.doc('student/'+id).get();
+  }
+
+
   /*
   // Get single object
   getUser(id: string) {

@@ -24,7 +24,7 @@
               <p>{{tmp.getage}}</p>
               <p>{{tmp.getaddress}}</p>
             </ion-label>
-            <ion-button slot="end" (click)="showModal(item)">
+            <ion-button slot="end" routerLink="/bookhome/{{tmp.getid}}">
               Cast
             </ion-button>
         </ion-item>

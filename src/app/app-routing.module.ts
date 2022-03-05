@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./dbhome/dbhome.module').then( m => m.DbhomePageModule)
   },
   {
-    path: 'bookhome',
+    path: 'bookhome/:id',
     loadChildren: () => import('./bookhome/bookhome.module').then( m => m.BookhomePageModule)
   },
 
