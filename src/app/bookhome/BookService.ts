@@ -3,6 +3,7 @@ import { Book } from './book';
 import { AngularFireDatabase, AngularFireList, AngularFireObject }
  from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -23,8 +24,8 @@ export class BookService {
     return this.ngFirestore.collection('student').add(tmpstd);
   }
 
-  getOne(id:string) {
-    return this.ngFirestore.collection('student').doc(id).valueChanges();
+  getOne(id:string): Observable<Book> {
+    return this.ngFirestore.collection('student').doc<Book>(id).valueChanges();
   }
 
   getOnething(id) {

@@ -15,7 +15,7 @@ export class BookhomePage implements OnInit {
 
   stdobj : any;
   id;
-  single_data;
+  public book: Book;
 
   constructor(private apiservice: BookService,
     private alertCtrl: AlertController, public navCtrl: NavController,
@@ -25,30 +25,14 @@ export class BookhomePage implements OnInit {
   ngOnInit() {
     this.id = this.Acroute.snapshot.paramMap.get('id');
     console.log(this.id);
-
-    this.apiservice.getDataList().subscribe((res) => { 
-      this.stdobj = res.map((t) => ({
-        getid: t.payload.doc.id,
-        getname: t.payload.doc.data()['sname'.toString()], 
-        getage: t.payload.doc.data()['age'.toString()], 
-        getaddress: t.payload.doc.data()['address'.toString()],   
-        getimg: t.payload.doc.data()['img'.toString()], 
-      })); 
-      console.log(this.stdobj); 
-      }); 
-      // this.apiservice.getOnething(this.id).toPromise().then( 
-      //   res => this.single_data = res 
-      //   );
-      this.getbook();
-
+    this.getbook();
 
   }
+
   getbook(){
-    this.apiservice.getTwo(this.id).toPromise().then(data =>
-      this.single_data = data
-    );
-    console.log(this.single_data);
-
-  }
-
+    this.apiservice.getOne(this.id).subscribe(book => {
+    this.book = book;
+    console.log(this.book);
+    });   
+  } 
 }

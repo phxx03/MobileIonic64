@@ -1,4 +1,4 @@
-export class Book {
+export interface Book {
     $key: string;
     name: String;
     age: number;
