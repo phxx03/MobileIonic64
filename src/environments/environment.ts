@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyD_SMpX9v3GjPwQPyaCiXWvRd9IX0H11YU',
-    authDomain: 'dbionic64-480c0.firebaseapp.com',
-    projectId: 'dbionic64-480c0',
-    storageBucket: 'dbionic64-480c0.appspot.com',
-    messagingSenderId: '900808997616',
-    appId: '1:900808997616:web:88b0343daf24cc48e4e035'
+    apiKey: "AIzaSyD_SMpX9v3GjPwQPyaCiXWvRd9IX0H11YU",
+    authDomain: "dbionic64-480c0.firebaseapp.com",
+    databaseURL: "https://dbionic64-480c0-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "dbionic64-480c0",
+    storageBucket: "dbionic64-480c0.appspot.com",
+    messagingSenderId: "900808997616",
+    appId: "1:900808997616:web:88b0343daf24cc48e4e035"
   }
 };
 

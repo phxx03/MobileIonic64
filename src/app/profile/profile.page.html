@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title [routerLink]="['/dbhome']">profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-card>
+        <ion-card-content>
+            <h2>{{user?.userName}}</h2>
+            <p>{{user?.userEmail}}</p>
+            <p>{{user?.userPhone}}</p>
+            <p>{{user?.createAt | date}}</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-button (click)="editProfile()" expand="block" fill="clear" shape="round">
+        Edit Profile
+    </ion-button>
+
+</ion-content>

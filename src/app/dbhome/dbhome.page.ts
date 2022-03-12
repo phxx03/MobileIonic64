@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from './StudentService'
 import { AlertController, NavController } from '@ionic/angular';
 import { Student } from './student'
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dbhome',
@@ -13,7 +15,11 @@ export class DbhomePage implements OnInit {
   stdobj: any;
   stdid: any;
 
-  constructor(private apiservice: StudentService, private alertCtrl: AlertController, public navCtrl: NavController) { }
+  constructor(private apiservice: StudentService, 
+    private alertCtrl: AlertController, 
+    public navCtrl: NavController,
+    private auth: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.apiservice.getDataList().subscribe((res) => { 
@@ -26,6 +32,14 @@ export class DbhomePage implements OnInit {
       })); 
       console.log(this.stdobj); 
       });     
+  }
+  
+  logout(){
+    this.auth.signOut();
+  }
+
+  gotoProfile(){
+    this.router.navigate(['/profile']);
   }
 
   async presentPrompAdd() {

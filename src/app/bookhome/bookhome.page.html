@@ -1,32 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-item>
-      <ion-icon name="storefront-outline" size="large"></ion-icon>
-      <ion-title>Diary</ion-title>
-    </ion-item>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-item>
+            <ion-icon name="storefront-outline" size="large"></ion-icon>
+            <ion-title [routerLink]="['/dbhome']">Diary</ion-title>
+        </ion-item>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  {{book?.sname}}
-  {{book?.age}}
-  <ion-card >
-  <ion-list>
-    <!--<ion-item-sliding *ngFor="let tmp of this.stdobj">-->
+    {{book?.sname}} {{book?.age}}
+    <ion-card>
+        <ion-list>
+            <!--<ion-item-sliding *ngFor="let tmp of this.stdobj">-->
             <ion-thumbnail>
-              <img style="width: 80px; height: 80px;" src={{book?.img}} />
+                <img style="width: 80px; height: 80px;" src={{book?.img}} />
             </ion-thumbnail>
             <ion-card-content>
-              <ion-card-title>  
-              <h1>{{book?.sname}}</h1>
-              </ion-card-title>
-              <h2>{{book?.age}}</h2>
-              <p>{{book?.address}}</p>
+                <ion-card-title>
+                    <h1>{{book?.sname}}</h1>
+                </ion-card-title>
+                <h2>{{book?.age}}</h2>
+                <p>{{book?.address}}</p>
             </ion-card-content>
 
-            
-    </ion-list>
-  </ion-card>
 
-    
+        </ion-list>
+    </ion-card>
+
+
 </ion-content>

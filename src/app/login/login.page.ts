@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { hasShadowDom } from '@ionic/core/dist/types/utils/helpers';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,32 +10,31 @@ import { hasShadowDom } from '@ionic/core/dist/types/utils/helpers';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  public name: string;
-  public age: string;
-  public course: number;
+  email: string;
+  password: string;
 
-  constructor(public toastCtrl: ToastController, public myroute: Router) { }
+  constructor(
+    private auth: AuthService,
+    private toastr: ToastController
+    ) { }
 
   ngOnInit() {
   }
 
-  go(){
-    const dataobj = { 
-      myname: this.name,
-      mypwd: this.age,
-      mytype: this.course
-    };
-    const sentobj = JSON.stringify(dataobj);
-    this.myroute.navigate(['loginresult', sentobj]);
+  login(){
+    if(this.email && this.password){
+      this.auth.signin(this.email,this.password);
+    } else {
+      this.toast('Plz enter Ur email and password', 'warning');
+    }
   }
 
-  async openToast() { 
-    const toast = await this.toastCtrl.create({ 
-    /*message: 'It is a Toast Notification',
-    showCloseButton: true,
-    closeButtonText: 'hide', */
-    message: 'message here…', 
-    duration: 5000, 
+  async toast(message, status) { 
+    const toast = await this.toastr.create({
+    message: message,
+    color: status,
+    position: 'top', 
+    duration: 2000, 
     }); 
     toast.present(); 
     }
