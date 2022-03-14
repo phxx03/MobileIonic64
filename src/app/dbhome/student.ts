@@ -1,7 +1,8 @@
 export class Student {
     $key: string;
-    name: String;
-    age: number;
-    address: string;
     img: string;
+    course: string;
+    faculty: string;
+    graduate: string;
+    link: string;
 }

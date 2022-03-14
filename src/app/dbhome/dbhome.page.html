@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-item>
             <ion-icon name="storefront-outline" size="large"></ion-icon>
-            <ion-title>Diary</ion-title>
+            <ion-title>Good life UBU</ion-title>
             <ion-button (click)="gotoProfile()" expand="block" fill="clear" shape="round">
                 Profile
             </ion-button>
@@ -14,24 +14,25 @@
 </ion-header>
 
 <ion-content>
-    <ion-button (click)="presentPrompAdd()" expand="full" color="secondary" icon-start>
+    <!-- <ion-button (click)="presentPrompAdd()" expand="full" color="secondary" icon-start>
         <ion-icon name="add"></ion-icon>
         Create
-    </ion-button>
+    </ion-button> -->
+    <ion-searchbar placeholder="name" [(ngModel)]="searchTerm" showCancelButton="focus" animate></ion-searchbar>
     <ion-list>
-        <ion-item-sliding *ngFor="let tmp of this.stdobj">
+        <ion-item-sliding *ngFor="let tmp of this.stdobj | filter:searchTerm">
             <ion-item>
                 <ion-item>
                     <ion-thumbnail slot="start">
                         <img src={{tmp.getimg}} />
                     </ion-thumbnail>
                     <ion-label>
-                        <h3>{{tmp.getname}}</h3>
-                        <p>{{tmp.getage}}</p>
-                        <p>{{tmp.getaddress}}</p>
+                        <h3>{{tmp.getcourse}}</h3>
+                        <h3>{{tmp.getNE}}</h3>
+                        <p>{{tmp.getfaculty}}</p>
                     </ion-label>
-                    <ion-button slot="end" routerLink="/bookhome/{{tmp.getid}}">
-                        Cast
+                    <ion-button slot="end" expand="block" fill="clear" shape="round" routerLink="/bookhome/{{tmp.getid}}">
+                        Read
                     </ion-button>
                 </ion-item>
 

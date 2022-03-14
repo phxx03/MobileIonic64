@@ -1,26 +1,38 @@
 <ion-header>
     <ion-toolbar>
         <ion-item>
-            <ion-icon name="storefront-outline" size="large"></ion-icon>
-            <ion-title [routerLink]="['/dbhome']">Diary</ion-title>
+            <ion-icon name="storefront-outline" size="large" [routerLink]="['/dbhome']"></ion-icon>
+            <ion-title [routerLink]="['/dbhome']">Good life UBU</ion-title>
         </ion-item>
     </ion-toolbar>
+    <style>
+         :root {
+            --ion-safe-area-top: 20px;
+            --ion-safe-area-bottom: 22px;
+        }
+    </style>
 </ion-header>
 
-<ion-content>
-    {{book?.sname}} {{book?.age}}
+<ion-content fullscreen>
     <ion-card>
         <ion-list>
             <!--<ion-item-sliding *ngFor="let tmp of this.stdobj">-->
-            <ion-thumbnail>
-                <img style="width: 80px; height: 80px;" src={{book?.img}} />
-            </ion-thumbnail>
-            <ion-card-content>
+            <img src={{book?.img}} />
+            <ion-card-header>
                 <ion-card-title>
-                    <h1>{{book?.sname}}</h1>
+                    <h1>{{book?.course}}</h1>
+                    <ion-card-subtitle>
+                        <h4>{{book?.faculty}}</h4>
+                    </ion-card-subtitle>
                 </ion-card-title>
-                <h2>{{book?.age}}</h2>
-                <p>{{book?.address}}</p>
+            </ion-card-header>
+            <ion-card-content>
+                {{book?.graduate}}
+                <!-- <button ion-button (click)="uploadURL()">{{book?.link}}</button>
+                <iframe class='webPage' name="eventsPage" [src]="openURL()" allowfullscreen>
+                    {{book?.link}}
+                </iframe> -->
+                <p><a href="{{book?.link}}">{{book?.link}}</a></p>
             </ion-card-content>
 
 

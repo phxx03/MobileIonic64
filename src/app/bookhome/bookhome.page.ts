@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from './BookService'
 import { AlertController, NavController  } from '@ionic/angular';
 import { Book } from './book'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer} from '@angular/platform-browser';
 
 
 @Component({
@@ -17,9 +18,11 @@ export class BookhomePage implements OnInit {
   id;
   public book: Book;
 
+
   constructor(private apiservice: BookService,
     private alertCtrl: AlertController, public navCtrl: NavController,
-    public Acroute: ActivatedRoute
+    public Acroute: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -35,4 +38,16 @@ export class BookhomePage implements OnInit {
     console.log(this.book);
     });   
   } 
+
+  // uploadURL(){
+  //   this.url=this.nameofurl;
+  //   localStorage.setItem('url', this.url);
+  //   this.router.navigateByUrl('/result');
+  // }
+
+  // openURL(){
+  
+  //   return this.sanitizer.bypassSecurityTrustResourceUrl(localStorage.getItem("url"));
+  
+  // }
 }

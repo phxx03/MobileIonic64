@@ -4,31 +4,40 @@ import { AlertController, NavController } from '@ionic/angular';
 import { Student } from './student'
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dbhome',
   templateUrl: './dbhome.page.html',
   styleUrls: ['./dbhome.page.scss'],
 })
+
+
 export class DbhomePage implements OnInit {
 
   stdobj: any;
   stdid: any;
+  searchTerm: string;
 
   constructor(private apiservice: StudentService, 
     private alertCtrl: AlertController, 
     public navCtrl: NavController,
     private auth: AuthService,
-    private router: Router) { }
+    private router: Router) {
+     }
 
   ngOnInit() {
     this.apiservice.getDataList().subscribe((res) => { 
       this.stdobj = res.map((t) => ({
         getid: t.payload.doc.id,
-        getname: t.payload.doc.data()['sname'.toString()], 
-        getage: t.payload.doc.data()['age'.toString()], 
-        getaddress: t.payload.doc.data()['address'.toString()],   
+        getcourse: t.payload.doc.data()['course'.toString()], 
+        getfaculty: t.payload.doc.data()['faculty'.toString()], 
+        getgraduate: t.payload.doc.data()['graduate'.toString()],   
         getimg: t.payload.doc.data()['img'.toString()], 
+        getlink: t.payload.doc.data()['link'.toString()], 
+        getNE: t.payload.doc.data()['NE'.toString()],
       })); 
       console.log(this.stdobj); 
       });     
@@ -37,6 +46,8 @@ export class DbhomePage implements OnInit {
   logout(){
     this.auth.signOut();
   }
+
+  openUrl(){ window.open('link', '_system'); }
 
   gotoProfile(){
     this.router.navigate(['/profile']);
@@ -48,19 +59,23 @@ export class DbhomePage implements OnInit {
       inputs: [
         {
           name: 'inputname',
-          placeholder: 'name'
+          placeholder: 'course'
         },
         {
           name: 'inputage',
-          placeholder: 'age'
+          placeholder: 'faculty'
         },
         {
           name: 'inputaddress',
-          placeholder: 'address'
+          placeholder: 'graduate'
         },
         {
           name: 'inputimg',
           placeholder: 'img'
+        },
+        {
+          name: 'inputlink',
+          placeholder: 'link'
         }
       ],
       buttons: [
@@ -76,10 +91,11 @@ export class DbhomePage implements OnInit {
           handler: data => {
             // eslint-disable-next-line @typescript-eslint/prefer-for-of
             const tmpdata = {};
-            tmpdata['sname'.toString()] = data.inputname;
-            tmpdata['age'.toString()] = data.inputage;
-            tmpdata['address'.toString()] = data.inputaddress;
+            tmpdata['course'.toString()] = data.inputcourse;
+            tmpdata['faculty'.toString()] = data.inputfaculty;
+            tmpdata['graduate'.toString()] = data.inputgraduate;
             tmpdata['img'.toString()] = data.inputimg;
+            tmpdata['link'.toString()] = data.inputlink;
             this.apiservice.createStudent(tmpdata); 
 
 
@@ -119,23 +135,27 @@ export class DbhomePage implements OnInit {
       async presentPromptEdit(tmpobj) {
         const alert = this.alertCtrl.create({
           subHeader: 'Edit',
-          message: 'Now you are editing ' + tmpobj.getname,
+          message: 'Now you are editing ' + tmpobj.getcourse,
           inputs: [
             {
-              name: 'name',
-              placeholder: tmpobj.getname
+              name: 'course',
+              placeholder: tmpobj.getcourse
             },
             {
-              name: 'age',
-              placeholder:tmpobj.getage
+              name: 'faculty',
+              placeholder:tmpobj.getfaculty
             },
             {
-              name: 'address',
-              placeholder: tmpobj.getaddress
+              name: 'graduate',
+              placeholder: tmpobj.getgraduate
             },
             {
               name: 'img',
               placeholder: tmpobj.getimg
+            },
+            {
+              name: 'link',
+              placeholder: tmpobj.getlink
             }
           ],
           buttons: [
@@ -150,10 +170,11 @@ export class DbhomePage implements OnInit {
               text: 'Update',
               handler: data => {
                 const updatedata = {};
-                updatedata['sname'.toString()] = data.name;
-                updatedata['age'.toString()] = data.age;
-                updatedata['address'.toString()] = data.address;
+                updatedata['course'.toString()] = data.course;
+                updatedata['faculty'.toString()] = data.faculty;
+                updatedata['graduate'.toString()] = data.graduate;
                 updatedata['img'.toString()] = data.img;
+                updatedata['link'.toString()] = data.link;
                 ///this.ngFirestore.doc('/Student/'+id).update(updatedata);
                 this.apiservice.updateUser(tmpobj.getid, updatedata);
                 console.log(updatedata);
@@ -168,6 +189,8 @@ export class DbhomePage implements OnInit {
         this.navCtrl.navigateForward('bookhome'); 
         console.log(this.stdid); 
         };  
+
+        
 
 
 
